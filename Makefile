@@ -46,6 +46,9 @@ else
 		ifneq ($(filter %86,$(UNAME_P)),)
 			export GOARCH = 386
 		endif
+		ifneq ($(filter s390x,$(UNAME_P)),)
+			export GOARCH = s390x
+		endif
 	endif
 endif
 
@@ -88,6 +91,9 @@ ifeq ($(_GOARCH),386)
 endif
 ifeq ($(_GOARCH),amd64)
 	V_ARCH := x86_64
+endif
+ifeq ($(_GOARCH),s390x)
+	V_ARCH := s390x
 endif
 V_OS_ARCH := $(V_OS)-$(V_ARCH)
 
